@@ -17,4 +17,7 @@ cp /var/opt/atlassian-jira/.install4j/response.varfile /tmp
 
 # update @path="/jira" server.xml
 xmlstarlet ed -L -u "/Server/Service/Engine/Host/Context/@path" -v '/jira' $JIRAHOME/conf/server.xml
-service jira stop; service jira start; clear; echo "all done";
+echo 'Restarting Service';
+service jira stop; service jira start; echo 'Cleaning up';
+rm -rf /tmp/atlassian*.*;
+clear; echo 'all done!';
